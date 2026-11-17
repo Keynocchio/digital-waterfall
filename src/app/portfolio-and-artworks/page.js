@@ -1,0 +1,125 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import balatro from "./saved-artwork/balatrojumbodesign.jpg";
+import diggaleg from "./saved-artwork/diggalegmariogalaxy2.jpg";
+import fnaf from "./saved-artwork/fnafplushdesigns.jpg";
+import forest from "./saved-artwork/forestscene.jpg";
+import gobblegut from "./saved-artwork/gobblegutmariogalaxy2.jpg";
+import poker from "./saved-artwork/pokerpvz.jpg";
+import tenna from "./saved-artwork/tennadeltarune.jpg";
+import barley from "./saved-artwork/barleybrawlstars.jpg";
+import albumcover from "./saved-artwork/albumcoverphotoshop.jpg";
+import rubytheartistalbumcover from "./saved-artwork/rubytheartistalbumcover.jpg";
+import gnarls from "./saved-artwork/msmgnarls.jpg";
+import ostrich from "./saved-artwork/ostrichegg.jpg";
+import fall1 from "./saved-artwork/background.png";
+import fall2 from "./saved-artwork/background1.png";
+import fall3 from "./saved-artwork/background2.png";
+
+const artworks = [
+  { image: fall2, title: "Beneath the Leaves #1", category: "Pixel art",  externalLink: "https://keynocchio.itch.io/beneath-the-leaves", externalLinkLabel: "My game called Beneath the Leaves; Click here!" },
+  { image: fall1, title: "Beneath the Leaves #2", category: "Pixel art",  externalLink: "https://keynocchio.itch.io/beneath-the-leaves", externalLinkLabel: "My game called Beneath the Leaves; Click here!" },
+  { image: fall3, title: "Beneath the Leaves #3", category: "Pixel art",  externalLink: "https://keynocchio.itch.io/beneath-the-leaves", externalLinkLabel: "My game called Beneath the Leaves; Click here!" },
+  { image: forest, title: "The Grove", category: "Painting", tall: true },
+  { image: poker, title: "Plants Playing Poker (Plants VS. Zombies)", category: "Illustration", wide: true },
+  { image: ostrich, title: "Iris", category: "Painting", wide: true, tall: true},
+  { image: balatro, title: "Balatro Jimbo", category: "Character Design" },
+  { image: albumcover, title: "Mock Album Cover", category: "Adobe Photoshop Practice", wide: true, tall: true},
+  { image: fnaf, title: "FNAF Plush Designs", category: "Character Design" },
+  { image: rubytheartistalbumcover, title: "Album Cover for ruby.theartist", category: "Painting", externalLink: "https://rubytheartist.bandcamp.com/album/uncanny-valley", externalLinkLabel: "ruby.theartist's newest album: Uncanny Valley; Click Here!", },
+  
+  { image: barley, title: "Barley, Brawl Stars Fanart", category: "Character Design"},
+  { image: diggaleg, title: "Digga-leg: Mario Galaxy 2", category: "Illustration", wide: true },
+  { image: gobblegut, title: "Gobblegut: Mario Galaxy 2", category: "Illustration", wide: true },
+  { image: tenna, title: "Tenna, Deltarune Fanart", category: "Character Design"},
+  { image: gnarls, title: "Gnarls, My Singing Monsters Fanart", category: "Character Design"},
+
+  ];
+
+export default function PortfolioAndArtworksPage() {
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
+
+  return (
+    <main className="relative min-h-screen overflow-hidden text-white">
+      <div className="fixed inset-0 bg-tile" aria-hidden="true" />
+
+      <div className="relative z-10 min-h-screen bg-black/35">
+        <Navbar />
+
+        <header className="mx-auto max-w-6xl px-6 pb-14 pt-16 sm:px-10 sm:pt-20">
+          <div className="flex flex-col justify-between gap-8 border-b border-white/20 pb-10 md:flex-row md:items-end">
+            <div>
+              <h1 className="max-w-3xl text-5xl leading-none tracking-[0.12em] sm:text-7xl">A collection of things I&apos;ve made.</h1>
+            </div>
+            <p className="max-w-xs text-sm leading-6 text-white/65 md:text-right">
+              Digital illustrations, designs, and concepts from the archive.
+            </p>
+          </div>
+          <div className="flex justify-between pt-5 text-xs uppercase tracking-[0.3em] text-white/45">
+            <span>Selected works</span>
+            <span>{String(artworks.length).padStart(2, "0")} pieces</span>
+          </div>
+        </header>
+
+        <section className="mx-auto max-w-6xl px-6 pb-24 sm:px-10" aria-label="Artwork collection">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {artworks.map((artwork) => (
+              <button
+                key={artwork.title}
+                type="button"
+                onClick={() => setSelectedArtwork(artwork)}
+                className={`group relative overflow-hidden border border-white/20 bg-black/50 text-left transition duration-500 hover:-translate-y-1 hover:border-white/70 ${artwork.tall ? "sm:row-span-2" : ""} ${artwork.wide ? "lg:col-span-2" : ""}`}
+                aria-label={`View ${artwork.title}`}
+              >
+                <Image
+                  src={artwork.image}
+                  alt={artwork.title}
+                  placeholder="blur"
+                  className="h-full min-h-[22rem] w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-80" />
+                <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
+                  <span>
+                    <span className="mb-2 block text-[10px] uppercase tracking-[0.28em] text-white/60">{artwork.category}</span>
+                    <span className="block text-lg tracking-[0.08em] text-white">{artwork.title}</span>
+                  </span>
+                  <span className="border border-white/40 px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-white/70 transition group-hover:border-white group-hover:text-white">View</span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <Footer />
+      </div>
+
+      {selectedArtwork && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-5" role="dialog" aria-modal="true" aria-label={`${selectedArtwork.title} artwork viewer`} onClick={() => setSelectedArtwork(null)}>
+          <div className="relative max-h-full max-w-5xl" onClick={(event) => event.stopPropagation()}>
+            <Image src={selectedArtwork.image} alt={selectedArtwork.title} className="max-h-[82vh] max-w-full object-contain" />
+            <div className="mt-3 flex items-center justify-between gap-5 text-xs uppercase tracking-[0.25em] text-white/60">
+              <span>{selectedArtwork.title}</span>
+              <div className="flex items-center gap-5">
+                {selectedArtwork.externalLink && (
+                  <a
+                    href={selectedArtwork.externalLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-white hover:text-white/60"
+                  >
+                    {selectedArtwork.externalLinkLabel || "Open link"}
+                  </a>
+                )}
+                <button type="button" onClick={() => setSelectedArtwork(null)} className="text-white hover:text-white/60">Close [x]</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
+  );
+}

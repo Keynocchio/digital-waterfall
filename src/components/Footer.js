@@ -1,0 +1,61 @@
+export default function Footer() {
+  return (
+    <footer id="contact" className="border-t border-white/10 py-10 text-center">
+      <div className="mb-6 flex justify-center gap-6 text-sm uppercase tracking-[0.2em] text-white/60">
+
+        <a
+          href="https://www.youtube.com/@keynocchio_official"
+          target="_blank"
+          className="hover:text-white"
+        >
+          YouTube
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@keynocchio"
+          target="_blank"
+          className="hover:text-white"
+        >
+          TikTok
+        </a>
+
+        <a
+          href="https://www.twitch.tv/keynocchio"
+          target="_blank"
+          className="hover:text-white"
+        >
+          Twitch
+        </a>
+
+        <a
+          href="https://www.instagram.com/keynocchio/"
+          target="_blank"
+          className="hover:text-white"
+        >
+          Instagram
+        </a>
+
+        <a
+          href="https://x.com/keynocchio"
+          target="_blank"
+          className="hover:text-white"
+        >
+          X
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/david-valcarcel-1aa229310/"
+          target="_blank"
+          className="hover:text-white"
+        >
+          LinkedIn
+        </a>
+
+      </div>
+
+      <p className="text-white/40 text-sm">
+        Keynocchio © 2026
+      </p>
+    </footer>
+  );
+}
