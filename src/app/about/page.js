@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 const faqs = [
   {
-    question: "Who are you?",
+    question: "Who are you",
     answer: "My real name is David! I am currently a college student studying both computer science and digital art: animation, but have decided to dedicate myself to creating projects and sharing my work, hoping to learn as time goes on! I have great ambitions to accomplish what I can, and I plan to spend my time bringing my ideas to life through any avenue, whether that be art, video games, or animation!",
   },
   {
